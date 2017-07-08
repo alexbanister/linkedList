@@ -1,0 +1,65 @@
+body {
+  background-color: #cfd8dc;
+  font-family: Open Sans, sans-serif;
+  color: #455a64;
+}
+
+header {
+  background-color: #455a64;
+  text-align: center;
+  vertical-align: middle;
+  color: #ffffff;
+  width: 50vw;
+  display: inline-block;
+  height: 100vh;
+}
+
+fieldset {
+  border: 0;
+  margin: auto;
+  border: 1px solid #3ee33e;
+  padding: 1em;
+}
+
+legend {
+  display: none;
+}
+
+h1 {
+  font-size: 3em;
+  width: 100%;
+  margin: auto;
+}
+
+h1 img {
+  height: .8em;
+  width: auto;
+}
+
+label {
+  display: none;
+}
+
+input {
+  width: 15em;
+  font-size: 1.5em;
+  margin: .7em;
+}
+
+button {
+  width: 15em;
+  font-size: 1.5em;
+  margin: .7em;
+}
+
+main {
+  display: inline-block;
+  height: 100vh;
+  border: 1px solid #3ee33e;
+}
+
+.website-box {
+  margin: 1em;
+  border: 1px solid #607d8b;
+  width: 100%;
+}
