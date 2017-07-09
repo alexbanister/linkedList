@@ -20,6 +20,8 @@ fieldset {
   border: 0;
   padding: 1em;
   display: block;
+  width: 15em;
+  margin: auto;
 }
 
 legend {
@@ -30,6 +32,7 @@ input {
   width: 15em;
   font-size: 1.5em;
   margin: .7em;
+  clear: both;
 }
 
 label {
@@ -49,6 +52,10 @@ button {
 
 button:hover {
   background-color: #ffd773;
+}
+
+button:disabled {
+  background-color: #cccccc;
 }
 
 h1 {
@@ -87,6 +94,7 @@ h3 a {
 a {
   font-weight: 400;
   color: #455a64;
+  text-decoration-color: #CDD6DB;
 }
 
 a:hover {
@@ -142,4 +150,30 @@ main {
   color: #455a64;
   font-weight: 800;
   text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  body {
+    font-size: .8em;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    color: #ffffff;
+    width: 100vw;
+    height: 33vh;
+  }
+
+  main {
+    width: 100vw;
+    height: 67vh;
+    overflow-y: scroll;
+  }
+}
+
+@media (max-width: 400px) {
+  body {
+    font-size: .6em;
+  }
 }

@@ -40,6 +40,7 @@ function isValidURL(url) {
 //Event Listeners
 enterButton.addEventListener("click", function(e){
   e.preventDefault();
+  console.log(e);
   linkBox.buildIt(websiteTitle.value, websiteUrl.value);
 });
 
