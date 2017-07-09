@@ -18,16 +18,15 @@ var mainContentBox = document.getElementById("main-content");
 
 var websiteTitle = document.getElementById("website-title");
 var websiteUrl = document.getElementById("website-url")
-var websiteBox = document.getElementById("website-box");
-var validateUrl = document.getElementById("website-url")
 
 //Objects
 var linkBox = {
-  bottomHtml: "</h3><p>Read</p><p class='float-right'>Delete</p>",
+  topHTML: '</h2><h3><a href="',
+  bottomHtml: '</a></h3><div class="read-delete-links"><p class="read-link"><a href="">Read</a></p><p><a href="">Delete</a></p></div>',
   buildIt: function(title, url){
     var boxHTML = document.createElement("article");
     boxHTML.className = "website-box";
-    boxHTML.innerHTML = "<h2>" + title + "</h2><h3>" + url + this.bottomHtml;
+    boxHTML.innerHTML = '<h2>' + title + this.topHTML +  url + '">' +  url + this.bottomHtml;
 
     mainContentBox.insertAdjacentHTML("afterbegin", boxHTML.outerHTML);
   }

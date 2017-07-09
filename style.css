@@ -9,7 +9,7 @@ body {
 header {
   background-color: #455a64;
   text-align: center;
-  vertical-align: middle;
+  align-items: center;
   color: #ffffff;
   width: 50vw;
   display: flex;
@@ -18,9 +18,8 @@ header {
 
 fieldset {
   border: 0;
-  border: 1px solid #3ee33e;
   padding: 1em;
-  align-items: center;
+  display: block;
 }
 
 legend {
@@ -108,6 +107,7 @@ main {
   color: #455a64;
   width: 50vw;
   height: 100vh;
+  overflow-y: scroll;
 }
 
 .website-box {
