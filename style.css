@@ -2,6 +2,8 @@ body {
   background-color: #cfd8dc;
   font-family: Open Sans, sans-serif;
   color: #455a64;
+  margin: 0px;
+  display: flex;
 }
 
 header {
@@ -10,33 +12,18 @@ header {
   vertical-align: middle;
   color: #ffffff;
   width: 50vw;
-  display: inline-block;
+  display: flex;
   height: 100vh;
 }
 
 fieldset {
   border: 0;
-  margin: auto;
   border: 1px solid #3ee33e;
   padding: 1em;
+  align-items: center;
 }
 
 legend {
-  display: none;
-}
-
-h1 {
-  font-size: 3em;
-  width: 100%;
-  margin: auto;
-}
-
-h1 img {
-  height: .8em;
-  width: auto;
-}
-
-label {
   display: none;
 }
 
@@ -46,20 +33,113 @@ input {
   margin: .7em;
 }
 
+label {
+  display: none;
+}
+
 button {
-  width: 15em;
-  font-size: 1.5em;
+  width: 19em;
+  font-size: 1.2em;
+  height: 2em;
   margin: .7em;
+  border: 0;
+  background: #ffc107;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+button:hover {
+  background-color: #ffd773;
+}
+
+h1 {
+  font-size: 3.2em;
+  margin: auto;
+  font-weight: 800;
+}
+
+h1 img {
+  height: .8em;
+  width: auto;
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 1.5em;
+  margin: 0;
+  padding-bottom: .3em;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 1em;
+  margin: 0;
+  margin-bottom: .5em;
+  padding: 1em 0;
+  border-top: 1px solid #cfd8dc;
+  border-bottom: 1px solid #cfd8dc;
+  display: block;
+}
+
+h3 a {
+  color: #607d8b;
+}
+
+a {
+  font-weight: 400;
+  color: #455a64;
+}
+
+a:hover {
+  font-weight: 800;
+  text-decoration-color: #ffc107;
+  color: #455a64;
+}
+
+p {
+  display: inline-block;
+  margin: auto;
+  margin-top: .3em;
+  width: 50%;
 }
 
 main {
   display: inline-block;
+  color: #455a64;
+  width: 50vw;
   height: 100vh;
-  border: 1px solid #3ee33e;
 }
 
 .website-box {
   margin: 1em;
   border: 1px solid #607d8b;
-  width: 100%;
+  padding: .5em 1em;
+  background-color: #ffffff;
+}
+
+.read {
+  background-color: #f2f4f4;
+  text-decoration-color: #cfd8dc;
+}
+
+.read-delete-links{
+  display: flex;
+  justify-content: space-between;
+  text-align: right;
+}
+
+.read-link {
+  text-align: left;
+}
+
+.read .read-link a {
+  color: #f05a28;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.read .read-link a:hover {
+  color: #455a64;
+  font-weight: 800;
+  text-decoration: underline;
 }
