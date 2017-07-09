@@ -18,7 +18,8 @@ var mainContentBox = document.getElementById("main-content");
 
 var websiteTitle = document.getElementById("website-title");
 var websiteUrl = document.getElementById("website-url")
-var websiteBox = document.getElementsByClassName("website-box");
+var websiteBox = document.getElementById("website-box");
+var validateUrl = document.getElementById("website-url")
 
 //Objects
 var linkBox = {
@@ -32,14 +33,25 @@ var linkBox = {
   }
 }
 
+function isValidURL(url) {
+  var regEx=new RegExp("^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$");
+  return regEx.test(url);
+}
+
 //Event Listeners
 enterButton.addEventListener("click", function(e){
   e.preventDefault();
   linkBox.buildIt(websiteTitle.value, websiteUrl.value);
 });
 
-websiteUrl.addEventListener ("input", function(){
-  // websiteUrl: input validation;
+websiteUrl.addEventListener ("blur", function(){
+  isValid = isValidURL(websiteUrl.value);
+  if (isValid) {
+    console.log("It's good");
+  }
+  else {
+    console.log("BAD!!!!!!!!");
+  }
 });
 
 websiteTitle.addEventListener ("input", function(){
@@ -47,9 +59,8 @@ websiteTitle.addEventListener ("input", function(){
 });
 
 //Functions
-function validateUrl() {
-  // validateUrl:
-}
+
+
 function websiteTitle() {
   // input:
 }
