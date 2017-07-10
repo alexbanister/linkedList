@@ -21,7 +21,7 @@ var websiteUrl = document.getElementById("website-url")
 //Objects
 var linkBox = {
   topHTML: '</h2><h3><a href="',
-  bottomHtml: '</a></h3><div class="read-delete-links"><p class="read-link"><a href="">Read</a></p><p><a href="">Delete</a></p></div>',
+  bottomHtml: '</a></h3><div class="read-delete-links"><p class="read-link"><a href="#" class="read-target">Read</a></p><p><a href="#" class="delete-target">Delete</a></p></div>',
   buildIt: function(title, url){
     var boxHTML = document.createElement("article");
     boxHTML.className = "website-box";
@@ -36,6 +36,16 @@ function isValidURL(url) {
   return regEx.test(url);
 }
 
+function websiteBoxLinks(e) {
+  var targetBox = e.target.closest('article');
+  if (e.target.className === "delete-target"){
+    targetBox.parentNode.removeChild(targetBox);
+  }
+  if (e.target.parentNode.className === "read-link") {
+    targetBox.classList.toggle('read');
+  }
+  e.stopPropagation();
+}
 //Event Listeners
 enterButton.addEventListener("click", function(e){
   e.preventDefault();
@@ -57,12 +67,4 @@ websiteTitle.addEventListener ("input", function(){
   // websiteUrl: input validation;
 });
 
-//Functions
-
-
-function websiteTitle() {
-  // input:
-}
-function enterButton() {
-  // input:
-}
+mainContentBox.addEventListener("click", websiteBoxLinks, false);
