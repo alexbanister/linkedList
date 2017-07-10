@@ -15,7 +15,6 @@ var enterButton = document.getElementById("enter-button");
 var markAsReadButton = document.getElementById("mark-as-read-button");
 var deleteButton = document.getElementById("delete-button");
 var mainContentBox = document.getElementById("main-content");
-
 var websiteTitle = document.getElementById("website-title");
 var websiteUrl = document.getElementById("website-url")
 
