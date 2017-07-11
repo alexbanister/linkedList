@@ -1,15 +1,3 @@
-//WHAT WE NEED TO ACCOMPLISH.
-  //We need two inputs:
-    //One for the title of the bookmark.
-    //One for the URL that the  bookmark should link to.
-  //One button for creating the bookmark and adding it to the page
-  //A section for all of the created bookmarks; each bookmark should display:
-    //The title of the bookmark
-    //The URL of the bookmark (this should be clickable and link to the URL)
-    //A button to "Mark as read"
-    //A button to "Remove" the bookmark
-
-
 //Global Variables
 var enterButton = document.getElementById("enter-button");
 var markAsReadButton = document.getElementById("mark-as-read-button");
@@ -49,22 +37,24 @@ function websiteBoxLinks(e) {
 //Event Listeners
 enterButton.addEventListener("click", function(e){
   e.preventDefault();
-  console.log(e);
   linkBox.buildIt(websiteTitle.value, websiteUrl.value);
 });
 
 websiteUrl.addEventListener ("blur", function(){
-  isValid = isValidURL(websiteUrl.value);
+  var isValid = isValidURL(websiteUrl.value);
   if (isValid) {
-    console.log("It's good");
-  }
-  else {
-    console.log("BAD!!!!!!!!");
+    enterButton.disabled = false;
+  } else {
+    enterButton.disabled = true;
   }
 });
 
 websiteTitle.addEventListener ("input", function(){
-  // websiteUrl: input validation;
+  if (websiteTitle.value === "") {
+    enterButton.disabled = true;
+  } else {
+    enterButton.disabled = false;
+  }
 });
 
 mainContentBox.addEventListener("click", websiteBoxLinks, false);
