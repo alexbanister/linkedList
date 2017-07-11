@@ -19,21 +19,6 @@ var linkBox = {
   }
 }
 
-function isValidURL(url) {
-  var regEx=new RegExp("^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$");
-  return regEx.test(url);
-}
-
-function websiteBoxLinks(e) {
-  var targetBox = e.target.closest('article');
-  if (e.target.className === "delete-target"){
-    targetBox.parentNode.removeChild(targetBox);
-  }
-  if (e.target.parentNode.className === "read-link") {
-    targetBox.classList.toggle('read');
-  }
-  e.stopPropagation();
-}
 //Event Listeners
 enterButton.addEventListener("click", function(e){
   e.preventDefault();
@@ -58,3 +43,20 @@ websiteTitle.addEventListener ("input", function(){
 });
 
 mainContentBox.addEventListener("click", websiteBoxLinks, false);
+
+//Functions
+function isValidURL(url) {
+  var regEx=new RegExp("^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$");
+  return regEx.test(url);
+}
+
+function websiteBoxLinks(e) {
+  var targetBox = e.target.closest('article');
+  if (e.target.className === "delete-target"){
+    targetBox.parentNode.removeChild(targetBox);
+  }
+  if (e.target.parentNode.className === "read-link") {
+    targetBox.classList.toggle('read');
+  }
+  e.stopPropagation();
+}
