@@ -1,5 +1,8 @@
 // If the user omits the title or the URL, the application should not create the link and should instead display an error.
-//   only disables button, no error displayed yet
+  // only disables button, no error displayed yet
+  // create error message divs (toggle hidden)
+  // create error message object with error text
+  // create error + valid input styles
 //
 // The application should be responsive and work equally well on desktop and mobile.
 //   fix mobile landscape display
@@ -12,6 +15,9 @@
 //   add above article.length - read.length and display it
 //
 // Add a “Clear Read Bookmarks” button which clears all the read bookmarks when clicked.
+  // querySelectorAll('read')
+  // for loop through array.
+  // set closest('article') toggle read
 
 //Global Variables
 var enterButton = document.getElementById("enter-button");
@@ -49,7 +55,7 @@ mainContentBox.addEventListener("click", websiteBoxLinks, false);
 
 //Functions
 function isValidURL(url) {
-  var regEx=new RegExp("^((https?):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$");
+  var regEx=new RegExp("^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$");
   return regEx.test(url);
 }
 
@@ -57,9 +63,7 @@ function cleanHTTP(url) {
   if (!url.match(/^[a-zA-Z]+:\/\//)) {
     return url;
   } else {
-    var urlSplit = url.split("//");
-    var urlArray = urlSplit.slice(1);
-    return urlArray.toString();
+    return url.split("//").slice(1).join();
   }
 }
 
@@ -68,6 +72,12 @@ function validateForm() {
     enterButton.disabled = false;
   } else {
     enterButton.disabled = true;
+    if(!isValidURL(websiteUrl.value)){
+      console.log('bad url');
+    }
+    if(websiteTitle.value === ""){
+      console.log('bad title');
+    }
   }
 }
 

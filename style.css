@@ -176,6 +176,26 @@ main {
   }
 }
 
+@media (max-width: 700px) and (orientation: landscape) {
+  body {
+    font-size: .7em;
+    display: flex;
+    flex-direction: row;
+  }
+
+  header {
+    color: #ffffff;
+    width: 50vw;
+    height: 100vh;
+  }
+
+  main {
+    width: 50vw;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+}
+
 @media (max-width: 400px) {
   body {
     font-size: .6em;
