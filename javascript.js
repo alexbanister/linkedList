@@ -38,6 +38,7 @@ var linkBox = {
     boxHTML.innerHTML = '<h2>' + title + this.topHTML +  url + '" target="_new">' +  url + this.bottomHtml;
 
     mainContentBox.insertAdjacentHTML("afterbegin", boxHTML.outerHTML);
+    totalNumBoxLinks();
   }
 }
 
@@ -54,6 +55,12 @@ websiteTitle.addEventListener ("input", validateForm);
 mainContentBox.addEventListener("click", websiteBoxLinks, false);
 
 //Functions
+function totalNumBoxLinks() {
+  var boxLinksArray = document.querySelectorAll('.website-box');
+  var totalNumBoxLinks = document.querySelector("#total-num-box-links");
+    totalNumBoxLinks.innerText = boxLinksArray.length;
+}
+
 function isValidURL(url) {
   var regEx=new RegExp("^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$");
   return regEx.test(url);
