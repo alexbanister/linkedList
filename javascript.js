@@ -3,17 +3,7 @@
   // create error message divs (toggle hidden)
   // create error message object with error text
   // create error + valid input styles
-//
-// The application should be responsive and work equally well on desktop and mobile.
-//   fix mobile landscape display
-//
-// The application should be able to keep count of the total number of links currently on the page.
-//   add querySelectorAll('article').length and display it
-//
-// The application should be able to keep count of the total number of read and unread links currently on the page.
-//   add querySelectorAll('read').length and display it
-//   add above article.length - read.length and display it
-//
+
 // Add a “Clear Read Bookmarks” button which clears all the read bookmarks when clicked.
   // querySelectorAll('read')
   // for loop through array.
@@ -25,7 +15,8 @@ var markAsReadButton = document.getElementById("mark-as-read-button");
 var deleteButton = document.getElementById("delete-button");
 var mainContentBox = document.getElementById("main-content");
 var websiteTitle = document.getElementById("website-title");
-var websiteUrl = document.getElementById("website-url")
+var websiteUrl = document.getElementById("website-url");
+var clearButton = document.getElementById("clear-button");
 
 //Objects
 var linkBox = {
@@ -42,18 +33,46 @@ var linkBox = {
 }
 
 //Event Listeners
+clearButton.addEventListener("click", clearReadLinks);
+
 enterButton.addEventListener("click", function(e){
   e.preventDefault();
   linkBox.buildIt(websiteTitle.value, websiteUrl.value);
+  totalNumBoxLinks();
 });
 
 websiteUrl.addEventListener ("input", validateForm);
 
 websiteTitle.addEventListener ("input", validateForm);
 
-mainContentBox.addEventListener("click", websiteBoxLinks, false);
+mainContentBox.addEventListener("click", function(e) {
+  websiteBoxLinks(e);
+  totalNumBoxLinks();
+});
 
 //Functions
+function clearReadLinks() {
+  var readLinksArray = document.querySelectorAll('.read');
+  for (var i = 0; i < readLinksArray.length; i++){
+    readLinksArray[i].parentNode.removeChild(readLinksArray[i]);
+  }
+}
+
+function totalNumBoxLinks() {
+  var boxLinksArray = document.querySelectorAll('.website-box');
+
+  var readLinksArray = document.querySelectorAll('.read');
+
+  var totalNumBoxLinks = document.querySelector("#total-links");
+  totalNumBoxLinks.innerText = boxLinksArray.length;
+
+  var totalReadLinks = document.querySelector("#read-links");
+  totalReadLinks.innerText = readLinksArray.length;
+
+  var totalUnreadLinks = document.querySelector("#unread-links");
+  totalUnreadLinks.innerText = boxLinksArray.length - readLinksArray.length;
+}
+
 function isValidURL(url) {
   var regEx=new RegExp("^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$");
   return regEx.test(url);
