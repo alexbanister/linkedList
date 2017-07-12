@@ -18,8 +18,10 @@
         <form>
           <label for="website-title">Website title</label>
           <input type="text" id="website-title" placeholder="Website Title">
+          <p id="title-error">Title is required</p>
           <label for="website-url">Website URL</label>
           <input type="text" id="website-url" placeholder="Website URL">
+          <p id="url-error">A valid URL is required</p>
           <button type="submit" id="enter-button" disabled>Enter</button>
         </form>
       </fieldset>
@@ -33,9 +35,9 @@
           <td>Read Links</td>
         </tr>
         <tr>
-          <td id="total-links" class="link-counts"></td>
-          <td id="unread-links" class="link-counts"></td>
-          <td id="read-links" class="link-counts"></td>
+          <td id="total-links" class="link-counts">0</td>
+          <td id="unread-links" class="link-counts">0</td>
+          <td id="read-links" class="link-counts">0</td>
         </tr>
         <tr>
           <td></td>
@@ -45,59 +47,6 @@
       </table>
 
       <section id="main-content">
-        <article class="website-box">
-          <h2>The Website Title1</h2>
-          <h3><a href="http://www.thewebsiteurl.com">www.thewebsiteurl.com</a></h3>
-          <div class="read-delete-links">
-            <p class="read-link"><a href="#" class="read-target">Read</a></p>
-            <p><a href="#" class="delete-target">Delete</a></p>
-          </div>
-        </article>
-
-        <article class="website-box">
-          <h2>The Website Title2</h2>
-          <h3><a href="www.thewebsiteurl.com">www.thewebsiteurl.com</a></h3>
-          <div class="read-delete-links">
-            <p class="read-link"><a href="#" class="read-target">Read</a></p>
-            <p><a href="#" class="delete-target">Delete</a></p>
-          </div>
-        </article>
-
-        <article class="website-box">
-          <h2>The Website Title3</h2>
-          <h3><a href="www.thewebsiteurl.com">www.thewebsiteurl.com</a></h3>
-          <div class="read-delete-links">
-            <p class="read-link"><a href="#" class="read-target">Read</a></p>
-            <p><a href="#" class="delete-target">Delete</a></p>
-          </div>
-        </article>
-
-        <article class="website-box">
-          <h2>The Website Title4</h2>
-          <h3><a href="www.thewebsiteurl.com">www.thewebsiteurl.com</a></h3>
-          <div class="read-delete-links">
-            <p class="read-link"><a href="#" class="read-target">Read</a></p>
-            <p><a href="#" class="delete-target">Delete</a></p>
-          </div>
-        </article>
-
-        <article class="website-box">
-          <h2>The Website Title5</h2>
-          <h3><a href="www.thewebsiteurl.com">www.thewebsiteurl.com</a></h3>
-          <div class="read-delete-links">
-            <p class="read-link"><a href="#" class="read-target">Read</a></p>
-            <p><a href="#" class="delete-target">Delete</a></p>
-          </div>
-        </article>
-
-        <article class="website-box">
-          <h2>The Website Title6</h2>
-          <h3><a href="www.thewebsiteurl.com">www.thewebsiteurl.com</a></h3>
-          <div class="read-delete-links">
-            <p class="read-link"><a href="#" class="read-target">Read</a></p>
-            <p><a href="#" class="delete-target">Delete</a></p>
-          </div>
-        </article>
       </section>
 
     </main>
