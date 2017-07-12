@@ -4,11 +4,6 @@
   // create error message object with error text
   // create error + valid input styles
 
-// Add a “Clear Read Bookmarks” button which clears all the read bookmarks when clicked.
-  // querySelectorAll('read')
-  // for loop through array.
-  // set closest('article') toggle read
-
 //Global Variables
 var enterButton = document.getElementById("enter-button");
 var markAsReadButton = document.getElementById("mark-as-read-button");
@@ -33,7 +28,10 @@ var linkBox = {
 }
 
 //Event Listeners
-clearButton.addEventListener("click", clearReadLinks);
+clearButton.addEventListener("click", function(e) {
+  clearReadLinks();
+  totalNumBoxLinks();
+});
 
 enterButton.addEventListener("click", function(e){
   e.preventDefault();
