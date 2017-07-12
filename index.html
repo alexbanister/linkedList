@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
   </head>
   <body>
     <header>
-
       <fieldset>
         <legend>Add a link</legend>
         <h1>
@@ -18,86 +18,36 @@
         <form>
           <label for="website-title">Website title</label>
           <input type="text" id="website-title" placeholder="Website Title">
+          <p id="title-error">Title is required</p>
           <label for="website-url">Website URL</label>
           <input type="text" id="website-url" placeholder="Website URL">
-          <button type="submit" id="enter-button">Enter</button>
+          <p id="url-error">A valid URL is required</p>
+          <button type="submit" id="enter-button" disabled>Enter</button>
         </form>
       </fieldset>
 
     </header>
-    <main id="main-content">
+    <main>
+      <table>
+        <tr>
+          <td>Total Links</td>
+          <td>Unread Links</td>
+          <td>Read Links</td>
+        </tr>
+        <tr>
+          <td id="total-links" class="link-counts">0</td>
+          <td id="unread-links" class="link-counts">0</td>
+          <td id="read-links" class="link-counts">0</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><a href="#" id="clear-button">Clear Read</a></td>
+        </tr>
+      </table>
 
-      <article class="website-box">
-        <h2>The Website Title</h2>
-        <h3><a href="www.thewebsiteurl.com">www.thewebsiteurl.com</a></h3>
-        <div class="read-delete-links">
-          <p class="read-link"><a href="">Read</a></p>
-          <p><a href="">Delete</a></p>
-        </div>
-      </article>
-
-      <article class="website-box read">
-        <h2>The Website Title</h2>
-        <h3><a href="www.thewebsiteurl.com">www.thewebsiteurl.com</a></h3>
-        <div class="read-delete-links">
-          <p class="read-link"><a href="">Read</a></p>
-          <p><a href="">Delete</a></p>
-        </div>
-      </article>
-
-      <article class="website-box">
-        <h2>The Website Title</h2>
-        <h3><a href="www.thewebsiteurl.com">www.thewebsiteurl.com</a></h3>
-        <div class="read-delete-links">
-          <p class="read-link"><a href="">Read</a></p>
-          <p><a href="">Delete</a></p>
-        </div>
-      </article>
-
-      <article class="website-box">
-        <h2>The Website Title</h2>
-        <h3><a href="www.thewebsiteurl.com">www.thewebsiteurl.com</a></h3>
-        <div class="read-delete-links">
-          <p class="read-link"><a href="">Read</a></p>
-          <p><a href="">Delete</a></p>
-        </div>
-      </article>
-
-      <article class="website-box">
-        <h2>The Website Title</h2>
-        <h3><a href="www.thewebsiteurl.com">www.thewebsiteurl.com</a></h3>
-        <div class="read-delete-links">
-          <p class="read-link"><a href="">Read</a></p>
-          <p><a href="">Delete</a></p>
-        </div>
-      </article>
-
-      <article class="website-box read">
-        <h2>The Website Title</h2>
-        <h3><a href="www.thewebsiteurl.com">www.thewebsiteurl.com</a></h3>
-        <div class="read-delete-links">
-          <p class="read-link"><a href="">Read</a></p>
-          <p><a href="">Delete</a></p>
-        </div>
-      </article>
-
-      <article class="website-box">
-        <h2>The Website Title</h2>
-        <h3><a href="www.thewebsiteurl.com">www.thewebsiteurl.com</a></h3>
-        <div class="read-delete-links">
-          <p class="read-link"><a href="">Read</a></p>
-          <p><a href="">Delete</a></p>
-        </div>
-      </article>
-
-      <article class="website-box">
-        <h2>The Website Title</h2>
-        <h3><a href="www.thewebsiteurl.com">www.thewebsiteurl.com</a></h3>
-        <div class="read-delete-links">
-          <p class="read-link"><a href="">Read</a></p>
-          <p><a href="">Delete</a></p>
-        </div>
-      </article>
+      <section id="main-content">
+      </section>
 
     </main>
   </body>

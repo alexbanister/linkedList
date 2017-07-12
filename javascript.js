@@ -1,69 +1,125 @@
-//WHAT WE NEED TO ACCOMPLISH.
-  //We need two inputs:
-    //One for the title of the bookmark.
-    //One for the URL that the  bookmark should link to.
-  //One button for creating the bookmark and adding it to the page
-  //A section for all of the created bookmarks; each bookmark should display:
-    //The title of the bookmark
-    //The URL of the bookmark (this should be clickable and link to the URL)
-    //A button to "Mark as read"
-    //A button to "Remove" the bookmark
-
-
 //Global Variables
 var enterButton = document.getElementById("enter-button");
 var markAsReadButton = document.getElementById("mark-as-read-button");
 var deleteButton = document.getElementById("delete-button");
 var mainContentBox = document.getElementById("main-content");
-
 var websiteTitle = document.getElementById("website-title");
-var websiteUrl = document.getElementById("website-url")
+var websiteUrl = document.getElementById("website-url");
+var clearButton = document.getElementById("clear-button");
 
 //Objects
 var linkBox = {
-  topHTML: '</h2><h3><a href="',
-  bottomHtml: '</a></h3><div class="read-delete-links"><p class="read-link"><a href="">Read</a></p><p><a href="">Delete</a></p></div>',
+  topHTML: '</h2><h3><a href="http://',
+  bottomHtml: '</a></h3><div class="read-delete-links"><p class="read-link"><a href="#" class="read-target">Mark Read</a></p><p><a href="#" class="delete-target">Delete</a></p></div>',
   buildIt: function(title, url){
+    url = cleanHTTP(url);
     var boxHTML = document.createElement("article");
     boxHTML.className = "website-box";
-    boxHTML.innerHTML = '<h2>' + title + this.topHTML +  url + '">' +  url + this.bottomHtml;
+    boxHTML.innerHTML = '<h2>' + title + this.topHTML +  url + '" target="_new">' +  url + this.bottomHtml;
 
     mainContentBox.insertAdjacentHTML("afterbegin", boxHTML.outerHTML);
   }
 }
 
-function isValidURL(url) {
-  var regEx=new RegExp("^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$");
-  return regEx.test(url);
-}
-
 //Event Listeners
+clearButton.addEventListener("click", function(e) {
+  clearReadLinks();
+  totalNumBoxLinks();
+});
+
 enterButton.addEventListener("click", function(e){
   e.preventDefault();
-  console.log(e);
   linkBox.buildIt(websiteTitle.value, websiteUrl.value);
+  websiteTitle.value = '';
+  websiteUrl.value = '';
+  enterButton.disabled = true;
+  websiteTitle.focus();
+  totalNumBoxLinks();
 });
 
-websiteUrl.addEventListener ("blur", function(){
-  isValid = isValidURL(websiteUrl.value);
-  if (isValid) {
-    console.log("It's good");
-  }
-  else {
-    console.log("BAD!!!!!!!!");
-  }
-});
+websiteUrl.addEventListener ("input", validateForm);
 
-websiteTitle.addEventListener ("input", function(){
-  // websiteUrl: input validation;
+websiteTitle.addEventListener ("input", validateForm);
+
+mainContentBox.addEventListener("click", function(e) {
+  websiteBoxLinks(e);
+  totalNumBoxLinks();
 });
 
 //Functions
-
-
-function websiteTitle() {
-  // input:
+function clearReadLinks() {
+  var readLinksArray = document.querySelectorAll('.read');
+  for (var i = 0; i < readLinksArray.length; i++){
+    readLinksArray[i].parentNode.removeChild(readLinksArray[i]);
+  }
 }
-function enterButton() {
-  // input:
+
+function totalNumBoxLinks() {
+  var boxLinksArray = document.querySelectorAll('.website-box');
+  var readLinksArray = document.querySelectorAll('.read');
+  var totalNumBoxLinks = document.querySelector("#total-links");
+  totalNumBoxLinks.innerText = boxLinksArray.length;
+  var totalReadLinks = document.querySelector("#read-links");
+  totalReadLinks.innerText = readLinksArray.length;
+  var totalUnreadLinks = document.querySelector("#unread-links");
+  totalUnreadLinks.innerText = boxLinksArray.length - readLinksArray.length;
+}
+
+function isValidURL(url) {
+  var regEx=new RegExp("^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$");
+  return regEx.test(url);
+}
+
+function cleanHTTP(url) {
+  if (!url.match(/^[a-zA-Z]+:\/\//)) {
+    return url;
+  } else {
+    return url.split("//").slice(1).join();
+  }
+}
+
+function controlErrorState(input, message, error) {
+  if (error) {
+    input.classList.add('input-error');
+    message.style.visibility = "visible";
+  } else {
+    input.classList.remove('input-error');
+    message.style.visibility = "hidden";
+  }
+}
+
+function validateForm() {
+  var titleError = document.getElementById('title-error');
+  var urlError = document.getElementById('url-error');
+  if(!isValidURL(websiteUrl.value)){
+    controlErrorState(websiteUrl, urlError, true);
+  } else {
+    controlErrorState(websiteUrl, urlError, false);
+  }
+  if(websiteTitle.value === ""){
+    controlErrorState(websiteTitle, titleError, true);
+  } else {
+    controlErrorState(websiteTitle, titleError, false);
+  }
+  if (isValidURL(websiteUrl.value) && websiteTitle.value !== "") {
+    enterButton.disabled = false;
+    controlErrorState(websiteTitle, titleError, false);
+    controlErrorState(websiteUrl, urlError, false);
+  }
+}
+
+function websiteBoxLinks(e) {
+  var targetBox = e.target.closest('article');
+  if (e.target.className === "delete-target"){
+    targetBox.parentNode.removeChild(targetBox);
+  }
+  if (e.target.parentNode.className === "read-link") {
+    targetBox.classList.toggle('read');
+    if (e.target.innerText === 'Mark Read') {
+      e.target.innerText = 'Mark Unread';
+    } else {
+      e.target.innerText = 'Mark Read';
+    }
+  }
+  e.stopPropagation();
 }
