@@ -1,7 +1,5 @@
 //Global Variables
 var enterButton = document.getElementById("enter-button");
-var markAsReadButton = document.getElementById("mark-as-read-button");
-var deleteButton = document.getElementById("delete-button");
 var mainContentBox = document.getElementById("main-content");
 var websiteTitle = document.getElementById("website-title");
 var websiteUrl = document.getElementById("website-url");
@@ -57,16 +55,19 @@ function clearReadLinks() {
 function totalNumBoxLinks() {
   var boxLinksArray = document.querySelectorAll('.website-box');
   var readLinksArray = document.querySelectorAll('.read');
+
   var totalNumBoxLinks = document.querySelector("#total-links");
   totalNumBoxLinks.innerText = boxLinksArray.length;
+
   var totalReadLinks = document.querySelector("#read-links");
   totalReadLinks.innerText = readLinksArray.length;
+
   var totalUnreadLinks = document.querySelector("#unread-links");
   totalUnreadLinks.innerText = boxLinksArray.length - readLinksArray.length;
 }
 
 function isValidURL(url) {
-  var regEx=new RegExp("^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$");
+  var regEx=new RegExp("^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-zA-Z0-9]+([\-\.]{1}[a-zA-Z0-9]+)*\.[a-zA-Z]{2,5}(:[0-9]{1,5})?(\/.*)?$");
   return regEx.test(url);
 }
 
@@ -91,16 +92,19 @@ function controlErrorState(input, message, error) {
 function validateForm() {
   var titleError = document.getElementById('title-error');
   var urlError = document.getElementById('url-error');
+
   if(!isValidURL(websiteUrl.value)){
     controlErrorState(websiteUrl, urlError, true);
   } else {
     controlErrorState(websiteUrl, urlError, false);
   }
+
   if(websiteTitle.value === ""){
     controlErrorState(websiteTitle, titleError, true);
   } else {
     controlErrorState(websiteTitle, titleError, false);
   }
+
   if (isValidURL(websiteUrl.value) && websiteTitle.value !== "") {
     enterButton.disabled = false;
     controlErrorState(websiteTitle, titleError, false);
@@ -113,6 +117,7 @@ function websiteBoxLinks(e) {
   if (e.target.className === "delete-target"){
     targetBox.parentNode.removeChild(targetBox);
   }
+
   if (e.target.parentNode.className === "read-link") {
     targetBox.classList.toggle('read');
     if (e.target.innerText === 'Mark Read') {
@@ -121,5 +126,4 @@ function websiteBoxLinks(e) {
       e.target.innerText = 'Mark Read';
     }
   }
-  e.stopPropagation();
 }

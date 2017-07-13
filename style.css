@@ -2,6 +2,7 @@ body {
   background-color: #cfd8dc;
   font-family: Open Sans, sans-serif;
   color: #455a64;
+  font-size: 1.3em;
   margin: 0px;
   display: flex;
 }
@@ -70,7 +71,7 @@ button:hover {
 }
 
 button:disabled {
-  background-color: #cccccc;
+  background-color: #D0D9DC;
 }
 
 table {
@@ -200,6 +201,11 @@ main {
   text-decoration: underline;
 }
 
+@media (max-width: 1200px) {
+  body {
+    font-size: 1em;
+  }
+}
 @media (max-width: 900px) {
   body {
     font-size: .8em;
